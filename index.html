@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تيتان تريد - محلل الشارت والتوصيات بالذكاء الاصطناعي</title>
+    <!-- مكتبة Tailwind CSS للتصميم السريع -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding-bottom: 70px;
+        }
+        .section-view { display: none; }
+        .section-view.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-100 max-w-md mx-auto min-h-screen relative shadow-2xl">
+
+    <!-- شاشة التطبيق -->
+    <div id="app" class="p-4">
+        
+        <!-- الهيدر العلوي الثابت -->
+        <header class="flex justify-between items-center bg-white p-3 rounded-2xl shadow-sm mb-4">
+            <div class="flex items-center gap-2">
+                <div class="bg-amber-600 text-white font-bold p-2 rounded-xl text-lg"><i class="fa-solid fa-t"></i></div>
+                <div>
+                    <h1 class="font-bold text-gray-800 text-sm">تيتان تريد</h1>
+                    <p class="text-[10px] text-gray-400">محللك بالذكاء الاصطناعي</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 text-gray-600">
+                <button class="bg-gray-100 p-2 rounded-full"><i class="fa-solid fa-headset"></i></button>
+                <button class="bg-gray-100 p-2 rounded-full"><i class="fa-solid fa-language"></i></button>
+                <button class="bg-gray-100 p-2 rounded-full relative">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="absolute -top-1 -right-1 bg-amber-500 text-white text-[10px] px-1 rounded-full">55</span>
+                </button>
+                <button class="bg-gray-100 p-2 rounded-full"><i class="fa-solid fa-gear"></i></button>
+            </div>
+        </header>
+
+        <!-- ================= قسم الرئيسية ================= -->
+        <div id="tab-home" class="section-view active space-y-4">
+            <!-- بطاقة الترحيب -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm">
+                <h2 class="text-xl font-bold text-gray-800 mb-1">كيف حالك اليوم، <span class="text-amber-600">Hassan</span>؟</h2>
+                <p class="text-xs text-gray-500">توصياتك تنتظرك، جاهز تبدأ تنفّذها؟</p>
+            </div>
+
+            <!-- حالة السوق -->
+            <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-gray-400 block mb-1">مزاج السوق</span>
+                        <span class="text-emerald-600 font-bold text-lg"><i class="fa-solid fa-arrow-trend-up text-xs"></i> صاعد</span>
+                    </div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-gray-400 block mb-1">متداولون نشطون</span>
+                        <span class="text-gray-800 font-bold text-lg">3,326</span>
+                    </div>
+                    <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                </div>
+            </div>
+
+            <!-- عداد التجربة المجانية -->
+            <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-2xl flex justify-between items-center">
+                <div>
+                    <span class="text-emerald-800 font-bold text-sm block mb-1">تجربتك المجانية فعّالة</span>
+                    <p class="text-[11px] text-emerald-600">المتبقي: 39:51:25 | سوف تبدأ باستلام التوصيات فور وجود فرصة في السوق.</p>
+                </div>
+                <i class="fa-solid fa-hourglass-half text-emerald-600 text-2xl"></i>
+            </div>
+
+            <!-- أزرار الخدمات السريعة -->
+            <div class="grid grid-cols-2 gap-3">
+                <div onclick="switchSection('tab-services')" class="bg-white p-4 rounded-2xl shadow-sm text-center cursor-pointer hover:bg-gray-50 transition">
+                    <div class="bg-amber-100 text-amber-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                        <i class="fa-solid fa-expand"></i>
+                    </div>
+                    <span class="font-bold text-sm text-gray-800">تحليل الرسم البياني</span>
+                </div>
+                <div onclick="switchSection('tab-signals')" class="bg-white p-4 rounded-2xl shadow-sm text-center cursor-pointer hover:bg-gray-50 transition">
+                    <div class="bg-amber-100 text-amber-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 text-xl">
+                        <i class="fa-solid fa-wave-square"></i>
+                    </div>
+                    <span class="font-bold text-sm text-gray-800">رادار الصفقات</span>
+                </div>
+            </div>
+
+            <!-- التسويق بالعمولة -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
+                <div>
+                    <h3 class="font-bold text-sm text-gray-800 mb-1">التسويق بالعمولة</h3>
+                    <p class="text-xs text-gray-400">اربح عمولات بدعوة أصدقائك</p>
+                </div>
+                <div class="bg-pink-100 text-pink-600 p-3 rounded-xl"><i class="fa-solid fa-network-wired"></i></div>
+            </div>
+        </div>
+
+        <!-- ================= قسم التوصيات / الرادار ================= -->
+        <div id="tab-signals" class="section-view space-y-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-bold text-sm text-gray-800">أوقات إرسال توصياتك</span>
+                    <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full"><span class="h-2 w-2 rounded-full bg-emerald-500 inline-block"></span> نشطة</span>
+                </div>
+                <div class="w-full bg-amber-500 h-2 rounded-full my-3"></div>
+                <p class="text-xs text-gray-500 text-center"><i class="fa-solid fa-wifi text-emerald-500"></i> متاحة الآن — على مدار الساعة (بتوقيت غرينتش+3)</p>
+            </div>
+
+            <!-- إحصائيات سريعة للتوصيات -->
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-white p-3 rounded-xl shadow-sm">
+                    <span class="text-xs text-gray-400 block mb-1"><i class="fa-solid fa-clock"></i> آخر توصية</span>
+                    <span class="font-bold text-sm">6 د</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-sm">
+                    <span class="text-xs text-gray-400 block mb-1"><i class="fa-solid fa-calendar"></i> وصلت اليوم</span>
+                    <span class="font-bold text-sm">23</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-sm">
+                    <span class="text-xs text-gray-400 block mb-1"><i class="fa-solid fa-wave-square"></i> نشطة الآن</span>
+                    <span class="font-bold text-sm text-amber-600">2</span>
+                </div>
+            </div>
+
+            <!-- بطاقة صفقة XAUUSD -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm space-y-3">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-amber-100 text-amber-700 p-2 rounded-xl"><i class="fa-solid fa-coins"></i></div>
+                        <div>
+                            <h4 class="font-bold text-sm text-gray-800">XAUUSD</h4>
+                            <span class="text-[10px] text-gray-400">#4129 - شراء • 6 د</span>
+                        </div>
+                    </div>
+                    <span class="bg-amber-50 text-amber-700 text-xs px-2 py-1 rounded-md font-bold">قصير</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2 bg-gray-50 p-3 rounded-xl text-center text-xs">
+                    <div>
+                        <span class="text-gray-400 block">الدخول</span>
+                        <span class="font-bold text-gray-800">4,354.26</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">وقف الخسارة</span>
+                        <span class="font-bold text-red-500">4,336.11</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 block">TP1</span>
+                        <span class="font-bold text-emerald-600">4,363.36</span>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-600 leading-relaxed">سحب سيولة ثلاثي (4h+1h+15m) مع CHoCh على H1 بقوة مثالية — انعكاس هيكلي واضح.</p>
+            </div>
+        </div>
+
+        <!-- ================= قسم النتائج / الإحصائيات ================= -->
+        <div id="tab-results" class="section-view space-y-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm text-center">
+                <span class="text-xs text-gray-400 block mb-1">نسبة النجاح الإجمالية</span>
+                <span class="text-4xl font-extrabold text-amber-500 mb-2 block">90%</span>
+                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden mb-2">
+                    <div class="bg-amber-500 h-full w-[90%]"></div>
+                </div>
+                <p class="text-[11px] text-gray-400">محسوبة على توصياتنا كما أُغلقناها — لا على نتيجة تنفيذك.</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="bg-white p-3 rounded-xl shadow-sm">
+                    <span class="text-xs text-gray-400 block mb-1">الصفقات</span>
+                    <span class="font-bold text-lg text-gray-800">21</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-sm">
+                    <span class="text-xs text-gray-400 block mb-1">الرابحة</span>
+                    <span class="font-bold text-lg text-emerald-600">19</span>
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-sm">
+                    <span class="text-xs text-gray-400 block mb-1">الخاسرة</span>
+                    <span class="font-bold text-lg text-red-500">2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= قسم الخدمات / تحليل الشارت الحقيقي بالذكاء الاصطناعي ================= -->
+        <div id="tab-services" class="section-view space-y-4">
+            <div class="bg-white p-4 rounded-2xl shadow-sm text-center">
+                <h3 class="font-bold text-sm text-gray-800 mb-1">محلل الشارت الذكي</h3>
+                <p class="text-xs text-gray-400">ارفع الشارت وسيقوم الذكاء الاصطناعي بتحليله فوراً</p>
+            </div>
+
+            <!-- أداة رفع الشارت -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm space-y-3 text-center">
+                <input type="file" id="chartInput" accept="image/*" class="hidden" onchange="previewImage(event)">
+                
+                <div onclick="document.getElementById('chartInput').click()" id="uploadBox" class="border-2 border-dashed border-amber-300 bg-amber-50/50 p-6 rounded-xl cursor-pointer relative overflow-hidden flex flex-col items-center justify-center min-h-[140px]">
+                    <div id="uploadPlaceholder">
+                        <i class="fa-solid fa-cloud-arrow-up text-amber-500 text-3xl mb-2"></i>
+                        <p class="text-xs text-gray-600 font-bold">اضغط هنا لاختيار أو التقاط صورة الشارت</p>
+                    </div>
+                    <img id="imagePreview" class="hidden max-h-40 rounded-lg shadow-md object-contain" alt="معاينة الشارت">
+                </div>
+                
+                <button onclick="analyzeChartWithAI()" class="w-full bg-amber-500 text-white py-3 rounded-xl font-bold text-sm shadow-md">تحليل الرسم البياني بالذكاء الاصطناعي</button>
+            </div>
+
+            <!-- منطقة عرض نتيجة التحليل الحقيقي -->
+            <div id="analysisResult" class="hidden bg-white p-4 rounded-2xl shadow-sm space-y-3 border-2 border-amber-500">
+                <div class="flex justify-between items-center border-b pb-2">
+                    <span class="font-bold text-sm text-gray-800"><i class="fa-solid fa-robot text-amber-600"></i> نتيجة التحليل الفني الحقيقي</span>
+                </div>
+                <div id="aiResponseText" class="text-xs text-gray-700 leading-relaxed space-y-2">
+                    <!-- هنا ستظهر النتيجة الحقيقية القادمة من السيرفر -->
+                </div>
+            </div>
+
+            <!-- أخبار السوق العالمية -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm space-y-3">
+                <h3 class="font-bold text-sm text-gray-800">أخبار السوق العالمية (GMT+3)</h3>
+                <div class="flex justify-between items-center border-b pb-2 text-xs">
+                    <div>
+                        <span class="font-bold block text-gray-800">مخزونات النفط الخام</span>
+                        <span class="text-[10px] text-gray-400">اليوم 5:30 م • USD</span>
+                    </div>
+                    <span class="bg-red-50 text-red-600 px-2 py-1 rounded font-bold text-[10px]">منخفض</span>
+                </div>
+                <div class="flex justify-between items-center text-xs">
+                    <div>
+                        <span class="font-bold block text-gray-800">قرار سعر الفائدة</span>
+                        <span class="text-[10px] text-gray-400">اليوم 9:00 م • USD</span>
+                    </div>
+                    <span class="bg-emerald-50 text-emerald-600 px-2 py-1 rounded font-bold text-[10px]">عالي</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= قسم المحفظة / حسابي ================= -->
+        <div id="tab-wallet" class="section-view space-y-4">
+            <h3 class="font-bold text-sm text-gray-800 text-center">شحن التوكنز الفوري</h3>
+            <div class="grid grid-cols-3 gap-2 text-center">
+                <div onclick="buyTokens(75, '٧٦٬٠٠٠ د.ع.')" class="bg-white p-3 rounded-2xl shadow-sm border-2 border-amber-500 relative cursor-pointer active:scale-95 transition">
+                    <span class="absolute -top-2 right-2 bg-amber-500 text-white text-[8px] px-1 rounded">أفضل قيمة</span>
+                    <span class="text-xl font-black text-amber-600 block mb-1">75</span>
+                    <span class="text-[10px] text-gray-400 block mb-2">توكن</span>
+                    <span class="bg-amber-100 text-amber-800 text-[10px] font-bold p-1 rounded block">٧٦٬٠٠٠ د.ع.</span>
+                </div>
+                <div onclick="buyTokens(30, '٣٨٬٠٠٠ د.ع.')" class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 cursor-pointer active:scale-95 transition">
+                    <span class="text-xl font-black text-gray-800 block mb-1">30</span>
+                    <span class="text-[10px] text-gray-400 block mb-2">توكن</span>
+                    <span class="bg-gray-100 text-gray-800 text-[10px] font-bold p-1 rounded block">٣٨٬٠٠٠ د.ع.</span>
+                </div>
+                <div onclick="buyTokens(10, '١٧٬٠٠٠ د.ع.')" class="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 cursor-pointer active:scale-95 transition">
+                    <span class="text-xl font-black text-gray-800 block mb-1">10</span>
+                    <span class="text-[10px] text-gray-400 block mb-2">توكن</span>
+                    <span class="bg-gray-100 text-gray-800 text-[10px] font-bold p-1 rounded block">١٧٬٠٠٠ د.ع.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- نافذة التحميل المنبثقة التفاعلية (Modal) -->
+        <div id="loadingModal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
+            <div class="bg-white p-6 rounded-2xl shadow-2xl text-center space-y-3 max-w-xs w-full">
+                <div class="inline-block animate-spin text-amber-600 text-4xl mb-1">
+                    <i class="fa-solid fa-circle-notch"></i>
+                </div>
+                <h4 class="font-bold text-gray-800 text-sm">جاري تحليل الشارت بالذكاء الاصطناعي...</h4>
+                <p class="text-[11px] text-gray-400">قراءة الشموع، الدعوم، واستخراج التوصية...</p>
+            </div>
+        </div>
+
+        <!-- ================= شريط التنقل السفلي الثابت ================= -->
+        <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto bg-white border-t border-gray-200 flex justify-around py-2 text-gray-400 text-xs shadow-lg rounded-t-2xl z-50">
+            <button onclick="switchSection('tab-home')" class="nav-btn flex flex-col items-center text-amber-600" data-target="tab-home">
+                <i class="fa-solid fa-house text-lg mb-1"><span>الرئيسية</span></i>
+            </button>
+            <button onclick="switchSection('tab-signals')" class="nav-btn flex flex-col items-center hover:text-amber-600" data-target="tab-signals">
+                <i class="fa-solid fa-wave-square text-lg mb-1"><span>التوصيات</span></i>
+            </button>
+            <button onclick="switchSection('tab-results')" class="nav-btn flex flex-col items-center hover:text-amber-600" data-target="tab-results">
+                <i class="fa-solid fa-chart-column text-lg mb-1"><span>النتائج</span></i>
+            </button>
+            <button onclick="switchSection('tab-services')" class="nav-btn flex flex-col items-center hover:text-amber-600" data-target="tab-services">
+                <i class="fa-solid fa-border-all text-lg mb-1"><span>الخدمات</span></i>
+            </button>
+            <button onclick="switchSection('tab-wallet')" class="nav-btn flex flex-col items-center hover:text-amber-600" data-target="tab-wallet">
+                <i class="fa-solid fa-user text-lg mb-1"><span>حسابي</span></i>
+            </button>
+        </nav>
+
+    </div>
+
+    <script>
+        function switchSection(sectionId) {
+            document.querySelectorAll('.section-view').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-amber-600');
+                btn.classList.add('text-gray-400');
+                if(btn.getAttribute('data-target') === sectionId) {
+                    btn.classList.add('text-amber-600');
+                    btn.classList.remove('text-gray-400');
+                }
+            });
+            window.scrollTo(0, 0);
+        }
+
+        let selectedFile = null;
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.getElementById('imagePreview');
+                output.src = reader.result;
+                output.classList.remove('hidden');
+                document.getElementById('uploadPlaceholder').classList.add('hidden');
+            };
+            if(event.target.files[0]) {
+                selectedFile = event.target.files[0];
+                reader.readAsDataURL(selectedFile);
+            }
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        async function analyzeChartWithAI() {
+            if(!selectedFile) {
+                alert('يرجى اختيار أو التقاط صورة الشارت أولاً!');
+                return;
+            }
+
+            document.getElementById('loadingModal').classList.remove('hidden');
+            document.getElementById('analysisResult').classList.add('hidden');
+
+            try {
+                const base64Image = await fileToBase64(selectedFile);
+                const serverUrl = 'https://your-backend-server.onrender.com/api/analyze';
+
+                const response = await fetch(serverUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        imageBase64: base64Image,
+                        mimeType: selectedFile.type
+                    })
+                });
+
+                const result = await response.json();
+                document.getElementById('loadingModal').classList.add('hidden');
+
+                if (result.success) {
+                    const aiText = result.data.candidates[0].content.parts[0].text;
+                    document.getElementById('aiResponseText').innerHTML = aiText.replace(/\n/g, '<br>');
+                    document.getElementById('analysisResult').classList.remove('hidden');
+                    document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    alert('خطأ في التحليل: ' + (result.error || 'حدث خطأ غير معروف'));
+                }
+
+            } catch (error) {
+                document.getElementById('loadingModal').classList.add('hidden');
+                alert('حدث خطأ في الاتصال بالسيرفر. تأكد من اتصال الإنترنت.');
+            }
+        }
+
+        function buyTokens(tokens, price) {
+            alert(`سيتم الانتقال لدفع (${price}) مقابل شحن (${tokens} توكن) عبر متجر جهازك.`);
+        }
+    </script>
+</body>
+</html>
