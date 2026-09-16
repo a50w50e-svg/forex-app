@@ -46,6 +46,7 @@
 
         <!-- ================= قسم الرئيسية ================= -->
         <div id="tab-home" class="section-view active space-y-4">
+            <!-- بطاقة الترحيب -->
             <div class="bg-white p-4 rounded-2xl shadow-sm">
                 <h2 class="text-xl font-bold text-gray-800 mb-1">كيف حالك اليوم، <span class="text-amber-600">Hassan</span>؟</h2>
                 <p class="text-xs text-gray-500">توصياتك تنتظرك، جاهز تبدأ تنفّذها؟</p>
@@ -93,6 +94,7 @@
                 </div>
             </div>
 
+            <!-- التسويق بالعمولة -->
             <div class="bg-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
                 <div>
                     <h3 class="font-bold text-sm text-gray-800 mb-1">التسويق بالعمولة</h3>
@@ -113,6 +115,7 @@
                 <p class="text-xs text-gray-500 text-center"><i class="fa-solid fa-wifi text-emerald-500"></i> متاحة الآن — على مدار الساعة (بتوقيت غرينتش+3)</p>
             </div>
 
+            <!-- إحصائيات سريعة للتوصيات -->
             <div class="grid grid-cols-3 gap-2 text-center">
                 <div class="bg-white p-3 rounded-xl shadow-sm">
                     <span class="text-xs text-gray-400 block mb-1"><i class="fa-solid fa-clock"></i> آخر توصية</span>
@@ -185,7 +188,7 @@
             </div>
         </div>
 
-        <!-- ================= قسم الخدمات / تحليل الشارت الحقيقي بالذكاء الاصطناعي ================= -->
+        <!-- ================= قسم الخدمات / تحليل الشارت المباشر بالذكاء الاصطناعي ================= -->
         <div id="tab-services" class="section-view space-y-4">
             <div class="bg-white p-4 rounded-2xl shadow-sm text-center">
                 <h3 class="font-bold text-sm text-gray-800 mb-1">محلل الشارت الذكي</h3>
@@ -207,13 +210,13 @@
                 <button onclick="analyzeChartWithAI()" class="w-full bg-amber-500 text-white py-3 rounded-xl font-bold text-sm shadow-md">تحليل الرسم البياني بالذكاء الاصطناعي</button>
             </div>
 
-            <!-- منطقة عرض نتيجة التحليل الحقيقي -->
+            <!-- منطقة عرض نتيجة التحليل -->
             <div id="analysisResult" class="hidden bg-white p-4 rounded-2xl shadow-sm space-y-3 border-2 border-amber-500">
                 <div class="flex justify-between items-center border-b pb-2">
-                    <span class="font-bold text-sm text-gray-800"><i class="fa-solid fa-robot text-amber-600"></i> نتيجة التحليل الفني الحقيقي</span>
+                    <span class="font-bold text-sm text-gray-800"><i class="fa-solid fa-robot text-amber-600"></i> نتيجة التحليل الفني المباشر</span>
                 </div>
                 <div id="aiResponseText" class="text-xs text-gray-700 leading-relaxed space-y-2">
-                    <!-- نتيجة السيرفر هنا -->
+                    <!-- هنا ستظهر النتيجة القادمة من الذكاء الاصطناعي مباشرة -->
                 </div>
             </div>
 
@@ -260,7 +263,7 @@
             </div>
         </div>
 
-        <!-- نافذة التحميل المنبثقة التفاعلية -->
+        <!-- نافذة التحميل المنبثقة التفاعلية (Modal) -->
         <div id="loadingModal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
             <div class="bg-white p-6 rounded-2xl shadow-2xl text-center space-y-3 max-w-xs w-full">
                 <div class="inline-block animate-spin text-amber-600 text-4xl mb-1">
@@ -344,46 +347,59 @@
             document.getElementById('loadingModal').classList.remove('hidden');
             document.getElementById('analysisResult').classList.add('hidden');
 
+            // ⚠️ ضع مفتاح الـ API الخاص بك هنا بين العلامتين ⚠️
+            const apiKey = "YOUR_GEMINI_API_KEY";
+
+            if (apiKey === "YOUR_GEMINI_API_KEY") {
+                document.getElementById('loadingModal').classList.add('hidden');
+                alert("يرجى إدخال مفتاح الـ API الصحيح داخل الكود أولاً!");
+                return;
+            }
+
             try {
                 const base64Image = await fileToBase64(selectedFile);
                 
-                // رابط السيرفر الخاص بك على Render
-                const serverUrl = 'https://forex-app-backend.onrender.com/api/analyze';
+                // الاتصال المباشر بنموذج Gemini عبر المتصفح
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 
-                const response = await fetch(serverUrl, {
+                const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        imageBase64: base64Image,
-                        mimeType: selectedFile.type
+                        contents: [{
+                            parts: [
+                                { text: "أنت محلل فني خبير في الأسواق المالية وتداول الفوركس. قم بتحليل هذا الرسم البياني بدقة، ووضح اتجاه السوق، مناطق الدخول المناسبة، وقف الخسارة، وأهداف جني الأرباح (TP)، مع تقديم نصيحة تداول مختصرة وواضحة باللغة العربية." },
+                                {
+                                    inline_data: {
+                                        mime_type: selectedFile.type,
+                                        data: base64Image
+                                    }
+                                }
+                            ]
+                        }]
                     })
                 });
-
-                if (!response.ok) {
-                    throw new Error('رمز الخطأ من السيرفر: ' + response.status);
-                }
 
                 const result = await response.json();
                 document.getElementById('loadingModal').classList.add('hidden');
 
-                if (result.success && result.data?.candidates?.[0]?.content?.parts?.[0]?.text) {
-                    const aiText = result.data.candidates[0].content.parts[0].text;
+                if (result.candidates && result.candidates[0].content.parts[0].text) {
+                    const aiText = result.candidates[0].content.parts[0].text;
                     document.getElementById('aiResponseText').innerHTML = aiText.replace(/\n/g, '<br>');
                     document.getElementById('analysisResult').classList.remove('hidden');
                     document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert('لم يتم استرجاع نتيجة صحيحة من الذكاء الاصطناعي.');
+                    alert('تعذر قراءة التحليل من الرد، تأكد من صحة مفتاح الـ API.');
                 }
 
-            } catch (error) {
+            }.catch (error) {
                 document.getElementById('loadingModal').classList.add('hidden');
-                console.error(error);
-                alert('تعذر الاتصال بالسيرفر. (ملاحظة: إذا كانت هذه هي المرة الأولى بعد فترة انقطاع، قد يستغرق سيرفر Render المجاني من 30 إلى 50 ثانية ليستيقظ، يرجى المحاولة مرة أخرى).');
+                alert('حدث خطأ في الاتصال بالشبكة أو الـ API.');
             }
         }
 
         function buyTokens(tokens, price) {
-            alert(`سيتم الانتقال لدفع (${price}) مقابل شحن (${tokens} توكن).`);
+            alert(`سيتم الانتقال لدفع (${price}) مقابل شحن (${tokens} توكن) عبر متجر جهازك.`);
         }
     </script>
 </body>
