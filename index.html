@@ -1,5 +1,4 @@
-
-               <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -351,7 +350,7 @@
             try {
                 const base64Image = await fileToBase64(selectedFile);
                 
-                // تم تعديل الرابط ليتوافق مع مسار حقيقي (استبدله برابط سيرفرك الفعلي على Render أو Vercel)
+                // الرابط الحقيقي المحدث لسيرفر Render الخاص بك
                 const serverUrl = 'https://forex-app-backend.onrender.com/api/analyze';
 
                 const response = await fetch(serverUrl, {
@@ -377,7 +376,7 @@
 
             } catch (error) {
                 document.getElementById('loadingModal').classList.add('hidden');
-                alert('حدث خطأ في الاتصال بالسيرفر. تأكد من إعداد رابط الـ Backend الصحيح.');
+                alert('حدث خطأ في الاتصال بالسيرفر. تأكد من عمل سيرفر Render وصلاحية الرابط.');
             }
         }
 
@@ -387,4 +386,3 @@
     </script>
 </body>
 </html>
-         
