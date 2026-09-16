@@ -46,7 +46,6 @@
 
         <!-- ================= قسم الرئيسية ================= -->
         <div id="tab-home" class="section-view active space-y-4">
-            <!-- بطاقة الترحيب -->
             <div class="bg-white p-4 rounded-2xl shadow-sm">
                 <h2 class="text-xl font-bold text-gray-800 mb-1">كيف حالك اليوم، <span class="text-amber-600">Hassan</span>؟</h2>
                 <p class="text-xs text-gray-500">توصياتك تنتظرك، جاهز تبدأ تنفّذها؟</p>
@@ -94,7 +93,6 @@
                 </div>
             </div>
 
-            <!-- التسويق بالعمولة -->
             <div class="bg-white p-4 rounded-2xl shadow-sm flex justify-between items-center">
                 <div>
                     <h3 class="font-bold text-sm text-gray-800 mb-1">التسويق بالعمولة</h3>
@@ -115,7 +113,6 @@
                 <p class="text-xs text-gray-500 text-center"><i class="fa-solid fa-wifi text-emerald-500"></i> متاحة الآن — على مدار الساعة (بتوقيت غرينتش+3)</p>
             </div>
 
-            <!-- إحصائيات سريعة للتوصيات -->
             <div class="grid grid-cols-3 gap-2 text-center">
                 <div class="bg-white p-3 rounded-xl shadow-sm">
                     <span class="text-xs text-gray-400 block mb-1"><i class="fa-solid fa-clock"></i> آخر توصية</span>
@@ -216,7 +213,7 @@
                     <span class="font-bold text-sm text-gray-800"><i class="fa-solid fa-robot text-amber-600"></i> نتيجة التحليل الفني الحقيقي</span>
                 </div>
                 <div id="aiResponseText" class="text-xs text-gray-700 leading-relaxed space-y-2">
-                    <!-- هنا ستظهر النتيجة الحقيقية القادمة من السيرفر -->
+                    <!-- نتيجة السيرفر هنا -->
                 </div>
             </div>
 
@@ -263,7 +260,7 @@
             </div>
         </div>
 
-        <!-- نافذة التحميل المنبثقة التفاعلية (Modal) -->
+        <!-- نافذة التحميل المنبثقة التفاعلية -->
         <div id="loadingModal" class="hidden fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
             <div class="bg-white p-6 rounded-2xl shadow-2xl text-center space-y-3 max-w-xs w-full">
                 <div class="inline-block animate-spin text-amber-600 text-4xl mb-1">
@@ -350,7 +347,7 @@
             try {
                 const base64Image = await fileToBase64(selectedFile);
                 
-                // الرابط الحقيقي المحدث لسيرفر Render الخاص بك
+                // رابط السيرفر الخاص بك على Render
                 const serverUrl = 'https://forex-app-backend.onrender.com/api/analyze';
 
                 const response = await fetch(serverUrl, {
@@ -362,26 +359,31 @@
                     })
                 });
 
+                if (!response.ok) {
+                    throw new Error('رمز الخطأ من السيرفر: ' + response.status);
+                }
+
                 const result = await response.json();
                 document.getElementById('loadingModal').classList.add('hidden');
 
-                if (result.success) {
+                if (result.success && result.data?.candidates?.[0]?.content?.parts?.[0]?.text) {
                     const aiText = result.data.candidates[0].content.parts[0].text;
                     document.getElementById('aiResponseText').innerHTML = aiText.replace(/\n/g, '<br>');
                     document.getElementById('analysisResult').classList.remove('hidden');
                     document.getElementById('analysisResult').scrollIntoView({ behavior: 'smooth' });
                 } else {
-                    alert('خطأ في التحليل: ' + (result.error || 'حدث خطأ غير معروف'));
+                    alert('لم يتم استرجاع نتيجة صحيحة من الذكاء الاصطناعي.');
                 }
 
             } catch (error) {
                 document.getElementById('loadingModal').classList.add('hidden');
-                alert('حدث خطأ في الاتصال بالسيرفر. تأكد من عمل سيرفر Render وصلاحية الرابط.');
+                console.error(error);
+                alert('تعذر الاتصال بالسيرفر. (ملاحظة: إذا كانت هذه هي المرة الأولى بعد فترة انقطاع، قد يستغرق سيرفر Render المجاني من 30 إلى 50 ثانية ليستيقظ، يرجى المحاولة مرة أخرى).');
             }
         }
 
         function buyTokens(tokens, price) {
-            alert(`سيتم الانتقال لدفع (${price}) مقابل شحن (${tokens} توكن) عبر متجر جهازك.`);
+            alert(`سيتم الانتقال لدفع (${price}) مقابل شحن (${tokens} توكن).`);
         }
     </script>
 </body>
