@@ -1,0 +1,16 @@
+{
+  "name": "فوركس برو AI",
+  "short_name": "فوركس برو",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "description": "المحلل البصري والذكاء الاصطناعي للأسواق المالية",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/fortawesome/Font-Awesome/6.x/svgs/solid/coins.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
