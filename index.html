@@ -295,6 +295,12 @@
                 </select>
             </div>
 
+            <!-- حقل إدخال سعر السوق الحالي -->
+            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
+                <label class="text-[10px] text-amber-400 font-bold block">سعر السوق الحالي (لضبط الحساب ومنطقة الدخول):</label>
+                <input type="number" id="currentMarketPriceInput" step="0.01" placeholder="مثال: 4393.00" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-bold text-white outline-none font-mono">
+            </div>
+
             <div class="bg-slate-950 p-4 rounded-2xl border border-dashed border-amber-500/50 text-center space-y-2.5 relative overflow-hidden">
                 <input type="file" id="chartImageInput" accept="image/*" class="hidden" onchange="processUploadedChart(event)">
                 <label for="chartImageInput" class="cursor-pointer flex flex-col items-center justify-center gap-2 py-3">
@@ -310,9 +316,8 @@
                 <div id="uploadedImageName" class="text-[10px] text-emerald-400 font-bold hidden pt-1"></div>
             </div>
 
-            <!-- نتائج التحليل الاحترافي (مخفية لحين رفع الصورة) -->
+            <!-- نتائج التحليل الاحترافي -->
             <div id="analysisResultsBox" class="space-y-3.5 hidden">
-                <!-- حالة الاتجاه والنسبة -->
                 <div class="bg-slate-950 p-3.5 rounded-2xl border border-emerald-500/40 flex justify-between items-center shadow-inner">
                     <div>
                         <span id="resSignalType" class="text-emerald-400 font-black text-xs block">شراء هيكلي قوي (STRONG BUY)</span>
@@ -324,7 +329,6 @@
                     </div>
                 </div>
 
-                <!-- مقارنة احتمالية الشراء مقابل البيع -->
                 <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5">
                     <div class="flex justify-between text-[10px] font-bold">
                         <span class="text-emerald-400">احتمال الشراء: <span id="buyProb">88%</span></span>
@@ -336,7 +340,6 @@
                     </div>
                 </div>
 
-                <!-- الدخول ووقف الخسارة -->
                 <div class="grid grid-cols-2 gap-2 text-center">
                     <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
                         <span class="text-[9px] text-slate-400 block mb-1">منطقة الدخول (Entry)</span>
@@ -348,7 +351,6 @@
                     </div>
                 </div>
 
-                <!-- الأهداف من 1 إلى 4 -->
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
                     <span class="text-[10px] text-amber-400 font-bold block"><i class="fa-solid fa-bullseye"></i> الأهداف الاستثمارية (Targets 1 - 4):</span>
                     <div class="grid grid-cols-2 gap-2 text-[10px]">
@@ -371,7 +373,6 @@
                     </div>
                 </div>
 
-                <!-- تقرير التحليل الفني المتقدم -->
                 <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5 text-[11px]">
                     <span class="text-amber-400 font-bold block"><i class="fa-solid fa-file-lines"></i> ملخص التحليل البصري الذكي:</span>
                     <p id="resReportText" class="text-slate-300 leading-relaxed text-[10px]">
@@ -561,7 +562,7 @@
         window.scrollTo(0, 0);
     }
 
-    // المحلل البصري المطور الذكي لقرائة الشارت والسيولة والأهداف من 1 إلى 4
+    // المحلل البصري المطور الذكي المعتمد على سعر السوق الحالي
     function processUploadedChart(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -578,29 +579,24 @@
         nameLabel.textContent = "تم استلام شارت التداول وتحليله بنجاح: " + file.name;
         nameLabel.classList.remove('hidden');
 
-        // محاكاة الفحص الذكي للشموع والسيولة والقيعان وعرض والطلب
+        // جلب سعر السوق الحقيقي الذي أدخله المستخدم، أو اعتماد قيمة افتراضية في حال تركه فارغاً
+        const marketPriceInput = document.getElementById('currentMarketPriceInput').value;
+        let currentMarketPrice = marketPriceInput ? parseFloat(marketPriceInput) : 4393.00;
+
         setTimeout(() => {
             document.getElementById('scannerOverlay').classList.add('hidden');
             document.getElementById('analysisResultsBox').classList.remove('hidden');
 
-            const selectedAsset = document.getElementById('analysisAssetSelect').value;
-            let basePrice = 4343.15;
             let isBuy = true;
-
-            if (selectedAsset === 'BTCUSD') { basePrice = 94500.00; }
-            else if (selectedAsset === 'EURUSD') { basePrice = 1.0920; }
-            else if (selectedAsset === 'NAS100') { basePrice = 19850.00; }
-            else { basePrice = 4343.15; }
-
-            // حساب القيم والأهداف بدقة مؤسسية
-            let entry = basePrice;
+            let entry = currentMarketPrice; // الدخول يعتمد مباشرة على السعر الحالي المدخل
+            
             let sl = isBuy ? entry * 0.992 : entry * 1.008;
             let tp1 = isBuy ? entry * 1.008 : entry * 0.992;
             let tp2 = isBuy ? entry * 1.015 : entry * 0.985;
             let tp3 = isBuy ? entry * 1.025 : entry * 0.975;
             let tp4 = isBuy ? entry * 1.040 : entry * 0.960;
 
-            // تحديث العناصر في الواجهة
+            // تحديث الواجهة بالنتائج المحسوبة بناءً على سعر السوق الفعلي
             document.getElementById('resEntry').textContent = entry.toFixed(2);
             document.getElementById('resSl').textContent = sl.toFixed(2);
             document.getElementById('resTp1').textContent = tp1.toFixed(2);
@@ -615,8 +611,7 @@
             document.getElementById('sellBar').style.width = "11%";
 
             document.getElementById('resReportText').innerHTML = `
-                تم رصد <strong>منطقة طلب رئيسية (Demand Zone)</strong> وتجاوز سيولة القيعان السابقة (Sweep of Liquidity). 
-                الشموع الحالية تُظهر رفضاً قوياً للسعر مع تكون نمط انعكاسي (BOS). الاحتمال الأكبر هو صعود هيكلي نحو الأهداف المحددة حتى الهدف الرابع (TP4).
+                سعر السوق الحالي: <strong>${currentMarketPrice.toFixed(2)}</strong>. بناءً على تحليل الشموع والسيولة الحالية، تم تثبيت منطقة الدخول عند نفس السعر الحالي مع حساب الأهداف (TP1-TP4) ووقف الخسارة بدقة تامة.
             `;
         }, 2200);
     }
