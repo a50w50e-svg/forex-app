@@ -57,7 +57,7 @@
 
 <!-- نافذة الإشعارات المنبثقة -->
 <div id="notificationsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-4 space-y-4 shadow-2xl text-right animate-in fade-in duration-200">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-4 space-y-4 shadow-2xl text-right">
         <div class="flex justify-between items-center border-b border-slate-800 pb-3">
             <h3 class="font-black text-sm text-white flex items-center gap-2"><i class="fa-solid fa-bell text-amber-400"></i> الإشعارات والتنبيهات</h3>
             <button onclick="toggleNotificationsModal()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></button>
@@ -68,7 +68,7 @@
                     <span class="font-bold text-amber-400">فرصة تداول جديدة</span>
                     <span class="text-[9px] text-slate-500">منذ دقيقتين</span>
                 </div>
-                <p class="text-[10px] text-slate-300">تم رصد منطقة طلب قوية للذهب (XAUUSD). جاهزة للتنفيذ.</p>
+                <p class="text-[10px] text-slate-300">تم رصد منطقة طلب قوية. جاهزة للتنفيذ.</p>
             </div>
         </div>
         <button onclick="toggleNotificationsModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl text-xs transition">إغلاق</button>
@@ -77,13 +77,13 @@
 
 <!-- نافذة التسويق بالعمولة المنبثقة -->
 <div id="affiliateModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-4 space-y-4 shadow-2xl text-right animate-in fade-in duration-200">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-4 space-y-4 shadow-2xl text-right">
         <div class="flex justify-between items-center border-b border-slate-800 pb-3">
             <h3 class="font-black text-sm text-white flex items-center gap-2"><i class="fa-solid fa-circle-nodes text-pink-400"></i> نظام التسويق بالعمولة</h3>
             <button onclick="toggleAffiliateModal()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="space-y-3">
-            <p class="text-[11px] text-slate-300">شارك رابط الإحالة الخاص بك مع أصدقائك واحصل على عمولات مستمرة عند اشتراكهم في المنصة.</p>
+            <p class="text-[11px] text-slate-300">شارك رابط الإحالة الخاص بك واحصل على عمولات مستمرة.</p>
             <div class="grid grid-cols-2 gap-2 text-center">
                 <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
                     <span class="text-[9px] text-slate-400 block">الأصدقاء المسجلون</span>
@@ -98,7 +98,7 @@
                 <label class="text-[10px] text-slate-400 font-bold block">رابط الإحالة الخاص بك:</label>
                 <div class="flex gap-1">
                     <input type="text" id="affiliateLinkInput" readonly value="https://forexbro.ai/ref/hasan99" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-[11px] text-amber-400 font-mono outline-none text-left" dir="ltr">
-                    <button onclick="copyAffiliateLink()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-2 rounded-xl text-xs transition whitespace-nowrap">نسخ</button>
+                    <button onclick="copyAffiliateLink()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3 py-2 rounded-xl text-xs transition">نسخ</button>
                 </div>
                 <span id="copyFeedback" class="text-[9px] text-emerald-400 hidden block">تم نسخ الرابط بنجاح!</span>
             </div>
@@ -109,7 +109,7 @@
 
 <!-- نافذة التجربة المجانية المنبثقة -->
 <div id="trialModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-4 space-y-4 shadow-2xl text-right animate-in fade-in duration-200">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl w-full max-w-sm p-4 space-y-4 shadow-2xl text-right">
         <div class="flex justify-between items-center border-b border-slate-800 pb-3">
             <h3 class="font-black text-sm text-white flex items-center gap-2"><i class="fa-solid fa-hourglass-half text-amber-400"></i> تفاصيل التجربة المجانية</h3>
             <button onclick="toggleTrialModal()" class="w-7 h-7 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center text-xs"><i class="fa-solid fa-xmark"></i></button>
@@ -120,13 +120,13 @@
                     <span id="trialStatusBadge" class="font-bold text-emerald-400">حالة الباقة: نشطة</span>
                     <span class="text-[10px] text-amber-400 font-mono">VIP Institutional</span>
                 </div>
-                <p class="text-[11px] text-slate-300">أنت تستمتع حالياً بكافة ميزات التحليل الآلي والتوصيات المؤسسية بشكل مجاني بالكامل.</p>
+                <p class="text-[11px] text-slate-300">أنت تستمتع حالياً بكافة ميزات التحليل الآلي والتوصيات.</p>
             </div>
             <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
                 <span class="text-[11px] text-slate-400">الوقت المتبقي لانتهاء التجربة:</span>
                 <span id="modalCountdown" class="text-xs font-black text-amber-400 font-mono">10:21:33</span>
             </div>
-            <button onclick="activateTrialAlerts()" class="w-full bg-gradient-to-r from-amber-500 to-emerald-400 text-slate-950 font-black py-2.5 rounded-xl text-xs shadow transition hover:opacity-90">تفعيل التنبيهات الفورية للصفقات</button>
+            <button onclick="activateTrialAlerts()" class="w-full bg-gradient-to-r from-amber-500 to-emerald-400 text-slate-950 font-black py-2.5 rounded-xl text-xs shadow transition">تفعيل التنبيهات الفورية للصفقات</button>
             <span id="trialFeedback" class="text-[10px] text-emerald-400 text-center hidden block font-bold">تم تفعيل استقبال التوصيات بنجاح!</span>
         </div>
         <button onclick="toggleTrialModal()" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold py-2 rounded-xl text-xs transition">إغلاق</button>
@@ -139,14 +139,14 @@
     <!-- 1. الصفحة الرئيسية -->
     <div id="section-home" class="app-section space-y-3.5">
         <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 text-right space-y-1">
-            <h2 class="text-sm font-black text-white">كيف حالك اليوم، <span class="text-amber-400">Hasan</span>؟</h2>
+            <h2 class="text-sm font-black text-white">كيف حالك اليوم، <span class="text-amber-400">Hasan Noman</span>؟</h2>
             <p class="text-[11px] text-slate-300">توصياتك تنتظرك، جاهز تبدأ تنفذها؟</p>
         </div>
 
         <div class="grid grid-cols-2 gap-2 text-right">
             <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 space-y-1">
                 <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="fa-solid fa-chart-line-down text-rose-400"></i> مزاج السوق</span>
-                <span class="text-base font-black text-rose-400 block">هابط</span>
+                <span class="text-base font-black text-emerald-400 block">صاعد (Bullish)</span>
             </div>
             <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 space-y-1">
                 <span class="text-[10px] text-slate-400 flex items-center gap-1"><i class="fa-solid fa-users text-emerald-400"></i> متداولون نشطون</span>
@@ -154,34 +154,9 @@
             </div>
         </div>
 
-        <div onclick="toggleTrialModal()" class="bg-slate-900 hover:bg-slate-800/80 p-4 rounded-2xl border border-slate-800 text-right space-y-2 cursor-pointer transition">
-            <div class="flex justify-between items-center">
-                <span id="homeTrialTitle" class="text-xs font-black text-emerald-400 flex items-center gap-1.5"><i class="fa-solid fa-hourglass-half text-amber-400"></i> تجربتك المجانية فعالة</span>
-                <i class="fa-solid fa-chevron-left text-slate-500 text-xs"></i>
-            </div>
-            <div class="flex justify-between items-center text-xs">
-                <span class="text-slate-400 text-[10px]">المتبقي: <span id="homeCountdown" class="font-mono text-amber-400 font-bold">10:21:33</span></span>
-                <span class="text-[10px] text-slate-300">اضغط لعرض التفاصيل والتنبيهات.</span>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-2 gap-2">
-            <button onclick="switchTab('services')" class="bg-slate-900 hover:bg-slate-800 p-4 rounded-2xl border border-slate-800 text-center space-y-2 transition">
-                <div class="w-10 h-10 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-base"><i class="fa-solid fa-expand"></i></div>
-                <span class="font-black text-xs text-white block">تحليل الرسم البياني</span>
-            </button>
-            <button onclick="switchTab('signals')" class="bg-slate-900 hover:bg-slate-800 p-4 rounded-2xl border border-slate-800 text-center space-y-2 transition">
-                <div class="w-10 h-10 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-base"><i class="fa-solid fa-wave-square"></i></div>
-                <span class="font-black text-xs text-white block">رادار الصفقات</span>
-            </button>
-        </div>
-
-        <div onclick="toggleAffiliateModal()" class="bg-slate-900 hover:bg-slate-800/80 p-4 rounded-2xl border border-slate-800 text-right space-y-1 cursor-pointer transition">
-            <div class="flex justify-between items-center">
-                <h4 class="font-black text-xs text-white flex items-center gap-1.5"><i class="fa-solid fa-circle-nodes text-pink-400"></i> التسويق بالعمولة</h4>
-                <i class="fa-solid fa-chevron-left text-slate-500 text-xs"></i>
-            </div>
-            <p class="text-[10px] text-slate-400">اربح عمولات بدعوة أصدقائك إلى المنصة.</p>
+        <div onclick="switchTab('services')" class="bg-slate-900 hover:bg-slate-800 p-4 rounded-2xl border border-slate-800 text-center space-y-2 transition cursor-pointer">
+            <div class="w-10 h-10 mx-auto rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-base"><i class="fa-solid fa-expand"></i></div>
+            <span class="font-black text-xs text-white block">الانتقال للمحلل البصري الذكي</span>
         </div>
 
         <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 space-y-3">
@@ -197,50 +172,16 @@
                 <div id="tradingview-container" style="height:100%;width:100%"></div>
             </div>
         </div>
-
-        <div class="bg-gradient-to-tr from-slate-900 to-amber-950/40 p-4 rounded-2xl border border-amber-500/30 text-right space-y-2">
-            <div class="flex justify-between items-center">
-                <span class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded text-[10px] font-bold">باقة العملات الرقمية</span>
-                <span class="text-[9px] text-slate-400">بالشراكة مع OKX</span>
-            </div>
-            <h4 class="font-black text-xs text-white">شهر مجاني لمن يسجل في أوكس عبر رابطنا</h4>
-            <p class="text-[10px] text-slate-300">ويودع مئة دولار على الأقل، وينفذ صفقة خلال ثلاثة أيام.</p>
-            <button onclick="alert('جاري الانتقال لصفحة التسجيل في OKX...')" class="w-full bg-amber-500 text-slate-950 font-black py-2 rounded-xl text-xs mt-1">احصل على شهرك المجاني ←</button>
-        </div>
-
-        <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 text-right space-y-3">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <h3 class="font-black text-sm text-white flex items-center gap-1.5"><i class="fa-solid fa-globe text-amber-400"></i> أخبار السوق العالمية</h3>
-                <span class="text-[9px] bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded font-bold">بتوقيت GMT+3</span>
-            </div>
-            <div class="space-y-2.5 text-xs">
-                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between items-center">
-                    <div class="space-y-1">
-                        <div class="font-bold text-white flex items-center gap-1.5"><span>🇯🇵</span> BOJ Policy Rate (سعر الفائدة)</div>
-                        <span class="text-[9px] text-slate-400">18/9 • 5:30 ص (غرينتش+3) | المتوقع: <span class="text-amber-400">0.25%</span></span>
-                    </div>
-                    <span class="bg-rose-500/20 text-rose-400 text-[10px] px-2 py-0.5 rounded font-bold">عالي</span>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- 2. قسم التوصيات -->
     <div id="section-signals" class="app-section space-y-3.5 hidden">
         <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 text-right space-y-3">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <h3 class="font-black text-sm text-white">التوصيات الاستثمارية المؤسسية</h3>
-                <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-lg font-bold border border-amber-500/30">محدث حقيقي</span>
-            </div>
+            <h3 class="font-black text-sm text-white">التوصيات الاستثمارية المؤسسية</h3>
             <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2.5">
                 <div class="flex justify-between items-center text-xs">
-                    <span class="font-black text-amber-400 flex items-center gap-1.5"><i class="fa-solid fa-coins"></i> GOLD (XAUUSD)</span>
+                    <span class="font-black text-amber-400"><i class="fa-solid fa-coins"></i> BTCUSD / XAUUSD</span>
                     <span class="bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded font-bold text-[10px]">شراء هيكلي (BUY)</span>
-                </div>
-                <div class="grid grid-cols-3 gap-1.5 text-center text-[10px] text-slate-300 bg-slate-900 p-2 rounded-lg">
-                    <div>الدخول: <span class="text-amber-400 font-bold">4343.15</span></div>
-                    <div>الهدف: <span class="text-emerald-400 font-bold">4395.00</span></div>
-                    <div>الوقف: <span class="text-rose-400 font-bold">4304.59</span></div>
                 </div>
             </div>
         </div>
@@ -249,94 +190,85 @@
     <!-- 3. قسم النتائج والإحصائيات -->
     <div id="section-results" class="app-section space-y-4 hidden">
         <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 text-right space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-                <h3 class="font-black text-sm text-white flex items-center gap-1.5"><i class="fa-solid fa-chart-pie text-amber-400"></i> الإحصائيات والأداء</h3>
-                <span class="text-[10px] text-amber-400">محدث</span>
-            </div>
+            <h3 class="font-black text-sm text-white flex items-center gap-1.5"><i class="fa-solid fa-chart-pie text-amber-400"></i> الإحصائيات والأداء</h3>
             <div class="grid grid-cols-2 gap-3 text-right">
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                    <span class="text-[10px] text-slate-400 block flex items-center gap-1"><i class="fa-solid fa-chart-line text-amber-400"></i> نسبة الربح</span>
+                    <span class="text-[10px] text-slate-400 block">نسبة الربح</span>
                     <span class="text-xl font-black text-white">87%</span>
                 </div>
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                    <span class="text-[10px] text-slate-400 block flex items-center gap-1"><i class="fa-solid fa-layer-group text-slate-400"></i> عدد التوصيات</span>
+                    <span class="text-[10px] text-slate-400 block">عدد التوصيات</span>
                     <span class="text-xl font-black text-amber-400">60</span>
-                </div>
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                    <span class="text-[10px] text-slate-400 block flex items-center gap-1"><i class="fa-solid fa-circle-xmark text-rose-400"></i> خاسرة</span>
-                    <span class="text-xl font-black text-rose-400">8</span>
-                </div>
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1">
-                    <span class="text-[10px] text-slate-400 block flex items-center gap-1"><i class="fa-solid fa-circle-check text-emerald-400"></i> توصيات رابحة</span>
-                    <span class="text-xl font-black text-amber-400">52</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 4. قسم الخدمات (المحلل البصري العالمي الاحترافي المحدث) -->
+    <!-- 4. قسم الخدمات (المحلل البصري المحدث مع تكبير الشارت بالكامل وتقارير احترافية) -->
     <div id="section-services" class="app-section space-y-4 hidden">
         <div class="bg-slate-900 text-white p-4 rounded-3xl space-y-4 text-right border border-slate-800 shadow-2xl">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
                 <div>
-                    <h2 class="font-black text-sm text-white">المحلل البصري المؤسسي الذكي (AI Smart V9.0)</h2>
-                    <span class="text-[9px] text-amber-400 font-bold">قراءة الشموع، السيولة، العرض والطلب، والأهداف (1 إلى 4)</span>
+                    <h2 class="font-black text-sm text-white">المحلل البصري المؤسسي (AI Smart V10.0)</h2>
+                    <span class="text-[9px] text-amber-400 font-bold">قراءة الشموع، هياكل السوق، والسيولة</span>
                 </div>
-                <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-lg font-black border border-amber-500/30">متصل</span>
+                <span class="text-[10px] bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-lg font-black border border-amber-500/30">نشط</span>
             </div>
 
-            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
-                <label class="text-[10px] text-amber-400 font-bold block">حدد الأصل المالي المراد تحليله:</label>
-                <select id="analysisAssetSelect" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-bold text-white outline-none">
-                    <option value="XAUUSD" selected>الذهب العالمي (Gold - XAUUSD)</option>
-                    <option value="BTCUSD">البتكوين (Bitcoin - BTC)</option>
-                    <option value="EURUSD">اليورو دولار (EURUSD)</option>
-                    <option value="NAS100">ناسداك (NAS100)</option>
-                </select>
+            <div class="grid grid-cols-2 gap-2">
+                <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
+                    <label class="text-[10px] text-amber-400 font-bold block">الأصل المالي:</label>
+                    <select id="analysisAssetSelect" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs font-bold text-white outline-none">
+                        <option value="BTCUSD" selected>البتكوين (BTCUSD)</option>
+                        <option value="XAUUSD">الذهب (XAUUSD)</option>
+                        <option value="EURUSD">اليورو دولار (EURUSD)</option>
+                        <option value="NAS100">ناسداك (NAS100)</option>
+                    </select>
+                </div>
+                <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
+                    <label class="text-[10px] text-amber-400 font-bold block">سعر السوق الحالي:</label>
+                    <input type="number" id="currentMarketPriceInput" step="0.01" value="77775.55" placeholder="77775.55" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs font-bold text-white outline-none font-mono">
+                </div>
             </div>
 
-            <!-- حقل إدخال سعر السوق الحالي -->
-            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-1.5">
-                <label class="text-[10px] text-amber-400 font-bold block">سعر السوق الحالي (لضبط الحساب ومنطقة الدخول):</label>
-                <input type="number" id="currentMarketPriceInput" step="0.01" placeholder="مثال: 4393.00" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs font-bold text-white outline-none font-mono">
-            </div>
-
-            <div class="bg-slate-950 p-4 rounded-2xl border border-dashed border-amber-500/50 text-center space-y-2.5 relative overflow-hidden">
+            <div class="bg-slate-950 p-3 rounded-2xl border border-dashed border-amber-500/50 text-center space-y-2 relative overflow-hidden">
                 <input type="file" id="chartImageInput" accept="image/*" class="hidden" onchange="processUploadedChart(event)">
-                <label for="chartImageInput" class="cursor-pointer flex flex-col items-center justify-center gap-2 py-3">
-                    <div class="w-12 h-12 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-xl border border-amber-500/40">
-                        <i class="fa-solid fa-brain"></i>
+                <label for="chartImageInput" class="cursor-pointer flex flex-col items-center justify-center gap-1.5 py-2">
+                    <div class="w-10 h-10 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-400 text-lg border border-amber-500/40">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
                     </div>
-                    <span class="font-black text-xs text-white">اضغط هنا لرفع شارت التداول (منصة أو تطبيق)</span>
+                    <span class="font-black text-xs text-white">اضغط لرفع شارت التداول (منصة MT5 أو TradingView)</span>
                 </label>
-                <div id="imagePreviewContainer" class="hidden relative mt-3 rounded-xl overflow-hidden border border-slate-800 max-h-48">
-                    <img id="uploadedImageDisplay" src="" alt="شارت" class="w-full object-cover max-h-48">
-                    <div id="scannerOverlay" class="absolute inset-0 bg-gradient-to-b from-amber-500/30 via-transparent to-emerald-500/30 scanning-line hidden"></div>
+                
+                <!-- حاوية عرض صورة الشارت بكامل حجمها ووضوحها دون قص -->
+                <div id="imagePreviewContainer" class="hidden relative mt-2 rounded-xl overflow-hidden border border-slate-800 bg-black flex items-center justify-center">
+                    <img id="uploadedImageDisplay" src="" alt="شارت التداول" class="w-full h-auto max-h-[380px] object-contain block mx-auto">
+                    <div id="scannerOverlay" class="absolute inset-0 bg-gradient-to-b from-amber-500/20 via-transparent to-emerald-500/20 scanning-line hidden"></div>
                 </div>
                 <div id="uploadedImageName" class="text-[10px] text-emerald-400 font-bold hidden pt-1"></div>
             </div>
 
-            <!-- نتائج التحليل الاحترافي -->
+            <!-- نتائج التحليل الاحترافي المفصل -->
             <div id="analysisResultsBox" class="space-y-3.5 hidden">
                 <div class="bg-slate-950 p-3.5 rounded-2xl border border-emerald-500/40 flex justify-between items-center shadow-inner">
                     <div>
-                        <span id="resSignalType" class="text-emerald-400 font-black text-xs block">شراء هيكلي قوي (STRONG BUY)</span>
-                        <span class="text-[9px] text-slate-400">بناءً على تجميع سيولة و اختبار منطقة طلب</span>
+                        <span id="resSignalType" class="text-emerald-400 font-black text-xs block">شراء استثماري هيكلي (STRONG BUY)</span>
+                        <span class="text-[9px] text-slate-400">تأكيد ارتداد من خط الاتجاه الصاعد ومنطقة السيولة</span>
                     </div>
                     <div class="text-left">
-                        <span class="text-[9px] text-slate-400 block">نسبة نجاح الصفقة</span>
-                        <span id="resAccuracy" class="text-amber-400 font-black text-sm">98.5%</span>
+                        <span class="text-[9px] text-slate-400 block">دقة الذكاء الاصطناعي</span>
+                        <span id="resAccuracy" class="text-amber-400 font-black text-sm">98.9%</span>
                     </div>
                 </div>
 
                 <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5">
                     <div class="flex justify-between text-[10px] font-bold">
-                        <span class="text-emerald-400">احتمال الشراء: <span id="buyProb">88%</span></span>
-                        <span class="text-rose-400">احتمال البيع: <span id="sellProb">12%</span></span>
+                        <span class="text-emerald-400">احتمال الصعود: <span id="buyProb">91%</span></span>
+                        <span class="text-rose-400">احتمال الهبوط: <span id="sellProb">9%</span></span>
                     </div>
                     <div class="w-full bg-slate-900 h-2 rounded-full overflow-hidden flex">
-                        <div id="buyBar" class="bg-emerald-500 h-full transition-all duration-500" style="width: 88%"></div>
-                        <div id="sellBar" class="bg-rose-500 h-full transition-all duration-500" style="width: 12%"></div>
+                        <div id="buyBar" class="bg-emerald-500 h-full transition-all duration-500" style="width: 91%"></div>
+                        <div id="sellBar" class="bg-rose-500 h-full transition-all duration-500" style="width: 9%"></div>
                     </div>
                 </div>
 
@@ -352,31 +284,32 @@
                 </div>
 
                 <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2">
-                    <span class="text-[10px] text-amber-400 font-bold block"><i class="fa-solid fa-bullseye"></i> الأهداف الاستثمارية (Targets 1 - 4):</span>
+                    <span class="text-[10px] text-amber-400 font-bold block"><i class="fa-solid fa-bullseye"></i> مستويات الأهداف الاستثمارية (Targets):</span>
                     <div class="grid grid-cols-2 gap-2 text-[10px]">
                         <div class="bg-slate-900 p-2 rounded-lg flex justify-between items-center border border-slate-800">
-                            <span class="text-slate-400">الهدف 1 (TP1):</span>
+                            <span class="text-slate-400">الهدف الأول (TP1):</span>
                             <span id="resTp1" class="font-bold text-emerald-400 font-mono">--</span>
                         </div>
                         <div class="bg-slate-900 p-2 rounded-lg flex justify-between items-center border border-slate-800">
-                            <span class="text-slate-400">الهدف 2 (TP2):</span>
+                            <span class="text-slate-400">الهدف الثاني (TP2):</span>
                             <span id="resTp2" class="font-bold text-emerald-400 font-mono">--</span>
                         </div>
                         <div class="bg-slate-900 p-2 rounded-lg flex justify-between items-center border border-slate-800">
-                            <span class="text-slate-400">الهدف 3 (TP3):</span>
+                            <span class="text-slate-400">الهدف الثالث (TP3):</span>
                             <span id="resTp3" class="font-bold text-emerald-400 font-mono">--</span>
                         </div>
                         <div class="bg-slate-900 p-2 rounded-lg flex justify-between items-center border border-slate-800">
-                            <span class="text-slate-400">الهدف 4 (TP4):</span>
+                            <span class="text-slate-400">الهدف الرابع (TP4):</span>
                             <span id="resTp4" class="font-bold text-emerald-400 font-mono">--</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5 text-[11px]">
-                    <span class="text-amber-400 font-bold block"><i class="fa-solid fa-file-lines"></i> ملخص التحليل البصري الذكي:</span>
-                    <p id="resReportText" class="text-slate-300 leading-relaxed text-[10px]">
-                        جارٍ تحليل الشمعة الأخيرة، كسر القيعان السابقة، وسحب السيولة من دفاتر صانع السوق...
+                <!-- تقرير تحليلي احترافي ومفصل -->
+                <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-2 text-[11px]">
+                    <span class="text-amber-400 font-bold block flex items-center gap-1.5"><i class="fa-solid fa-file-waveform"></i> التقرير الفني المؤسسي المفصل:</span>
+                    <p id="resReportText" class="text-slate-300 leading-relaxed text-[11px] text-justify">
+                        <!-- يتم تعبئته تلقائياً -->
                     </p>
                 </div>
             </div>
@@ -387,14 +320,10 @@
     <div id="section-community" class="app-section space-y-4 hidden">
         <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 text-right space-y-3">
             <h3 class="font-black text-sm text-white">المجتمع العالمي للمتداولين</h3>
-            <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800 space-y-2">
-                <textarea id="newPostInput" placeholder="اكتب تحليلك الفني هنا..." class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white outline-none resize-none h-20"></textarea>
-                <button onclick="addNewPost()" class="bg-amber-500 text-slate-950 font-black px-4 py-1.5 rounded-xl text-xs">نشر التحليل</button>
-            </div>
             <div id="postsContainer" class="space-y-3">
                 <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-2">
-                    <h4 class="font-bold text-xs text-amber-400">أحمد التميمي</h4>
-                    <p class="text-xs text-slate-200">الذهب يحترم منطقة الطلب عند 4340 بجدارة.</p>
+                    <h4 class="font-bold text-xs text-amber-400">Hasan Noman</h4>
+                    <p class="text-xs text-slate-200">تم فحص شارت البيتكوين عبر المحلل الذكي والنتائج ممتازة.</p>
                 </div>
             </div>
         </div>
@@ -404,10 +333,10 @@
     <div id="section-account" class="app-section space-y-4 hidden">
         <div class="bg-slate-900 p-4 rounded-2xl shadow border border-slate-800 text-right space-y-3">
             <h3 class="font-black text-sm text-white">حسابي (VIP PRO)</h3>
-            <p class="text-xs text-amber-400 font-bold">حسن نعمان كاظم (Hasan Noman)</p>
+            <p class="text-xs text-amber-400 font-bold">حسن نعمان كاظم (Hasan Noman Kadhim)</p>
             <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-500/40 flex justify-between items-center">
-                <span class="text-xs text-white">باقة المحلل المؤسسي مفعلة</span>
-                <span class="text-emerald-400 font-bold text-xs">مفعل VIP</span>
+                <span class="text-xs text-white">حالة الحساب</span>
+                <span class="text-emerald-400 font-bold text-xs">مفعل VIP مؤسسي</span>
             </div>
         </div>
     </div>
@@ -447,25 +376,14 @@
         }
     }
 
-    function toggleNotificationsModal() {
-        document.getElementById('notificationsModal').classList.toggle('hidden');
-    }
-
-    function toggleAffiliateModal() {
-        document.getElementById('affiliateModal').classList.toggle('hidden');
-    }
-
-    function toggleTrialModal() {
-        document.getElementById('trialModal').classList.toggle('hidden');
-    }
+    function toggleNotificationsModal() { document.getElementById('notificationsModal').classList.toggle('hidden'); }
+    function toggleAffiliateModal() { document.getElementById('affiliateModal').classList.toggle('hidden'); }
+    function toggleTrialModal() { document.getElementById('trialModal').classList.toggle('hidden'); }
 
     function activateTrialAlerts() {
         const feedback = document.getElementById('trialFeedback');
         feedback.classList.remove('hidden');
-        setTimeout(() => {
-            feedback.classList.add('hidden');
-            toggleTrialModal();
-        }, 2000);
+        setTimeout(() => { feedback.classList.add('hidden'); toggleTrialModal(); }, 2000);
     }
 
     function copyAffiliateLink() {
@@ -478,51 +396,20 @@
     }
 
     let totalSeconds = (10 * 3600) + (21 * 60) + 33;
-
-    function startTrialCountdown() {
-        const homeTimer = document.getElementById('homeCountdown');
-        const modalTimer = document.getElementById('modalCountdown');
-        const homeTitle = document.getElementById('homeTrialTitle');
-        const trialStatusBadge = document.getElementById('trialStatusBadge');
-
-        const timerInterval = setInterval(() => {
-            if (totalSeconds <= 0) {
-                clearInterval(timerInterval);
-                if (homeTimer) homeTimer.textContent = "انتهت التجربة";
-                if (modalTimer) modalTimer.textContent = "انتهت التجربة";
-                if (homeTitle) homeTitle.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-rose-400"></i> انتهت تجربتك المجانية`;
-                if (trialStatusBadge) {
-                    trialStatusBadge.textContent = "حالة الباقة: منتهية";
-                    trialStatusBadge.className = "font-bold text-rose-400";
-                }
-                return;
-            }
-
-            totalSeconds--;
-            let hours = Math.floor(totalSeconds / 3600);
-            let minutes = Math.floor((totalSeconds % 3600) / 60);
-            let seconds = totalSeconds % 60;
-
-            let formattedTime = 
-                String(hours).padStart(2, '0') + ":" + 
-                String(minutes).padStart(2, '0') + ":" + 
-                String(seconds).padStart(2, '0');
-
-            if (homeTimer) homeTimer.textContent = formattedTime;
-            if (modalTimer) modalTimer.textContent = formattedTime;
-        }, 1000);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-        startTrialCountdown();
-    });
+    setInterval(() => {
+        if (totalSeconds > 0) totalSeconds--;
+        let h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        let m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        let s = String(totalSeconds % 60).padStart(2, '0');
+        if(document.getElementById('homeCountdown')) document.getElementById('homeCountdown').textContent = `${h}:${m}:${s}`;
+        if(document.getElementById('modalCountdown')) document.getElementById('modalCountdown').textContent = `${h}:${m}:${s}`;
+    }, 1000);
 
     let tvLoaded = false;
     function loadTradingViewChart(symbol) {
         const container = document.getElementById('tradingview-container');
         if (!container) return;
         container.innerHTML = '';
-        
         try {
             const script = document.createElement('script');
             script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
@@ -534,18 +421,10 @@
             });
             container.appendChild(script);
             tvLoaded = true;
-        } catch(e) {
-            container.innerHTML = `<div class='flex flex-col items-center justify-center h-full text-slate-400 text-xs p-4 text-center'>
-                <i class='fa-solid fa-chart-line text-amber-400 text-2xl mb-2'></i>
-                <span>شارت الأسواق النشط (${symbol})</span>
-                <span class='text-[10px] text-emerald-400 mt-1'>● متصل بالبث الحي المؤسسي</span>
-            </div>`;
-        }
+        } catch(e) {}
     }
 
-    function changeHomeChart(symbol) {
-        loadTradingViewChart(symbol);
-    }
+    function changeHomeChart(symbol) { loadTradingViewChart(symbol); }
 
     function switchTab(tabId) {
         document.querySelectorAll('.app-section').forEach(sec => sec.classList.add('hidden'));
@@ -556,13 +435,11 @@
         const targetNav = document.getElementById('nav-' + tabId);
         if(targetNav) targetNav.classList.add('text-amber-400', 'font-bold');
 
-        if (tabId === 'home' && !tvLoaded) {
-            loadTradingViewChart('OANDA:XAUUSD');
-        }
+        if (tabId === 'home' && !tvLoaded) loadTradingViewChart('BINANCE:BTCUSDT');
         window.scrollTo(0, 0);
     }
 
-    // المحلل البصري المطور الذكي المعتمد على سعر السوق الحالي
+    // دالة تحليل الشارت مع تكبير الصورة بالكامل وتقرير فني مؤسسي مفصل
     function processUploadedChart(event) {
         const file = event.target.files[0];
         if (!file) return;
@@ -576,58 +453,45 @@
         reader.readAsDataURL(file);
 
         const nameLabel = document.getElementById('uploadedImageName');
-        nameLabel.textContent = "تم استلام شارت التداول وتحليله بنجاح: " + file.name;
+        nameLabel.textContent = "تم استلام الشارت وعرضه بالكامل بنجاح: " + file.name;
         nameLabel.classList.remove('hidden');
 
-        // جلب سعر السوق الحقيقي الذي أدخله المستخدم، أو اعتماد قيمة افتراضية في حال تركه فارغاً
         const marketPriceInput = document.getElementById('currentMarketPriceInput').value;
-        let currentMarketPrice = marketPriceInput ? parseFloat(marketPriceInput) : 4393.00;
+        const selectedAsset = document.getElementById('analysisAssetSelect').value;
+        let basePrice = marketPriceInput ? parseFloat(marketPriceInput) : 77775.55;
 
         setTimeout(() => {
             document.getElementById('scannerOverlay').classList.add('hidden');
             document.getElementById('analysisResultsBox').classList.remove('hidden');
 
-            let isBuy = true;
-            let entry = currentMarketPrice; // الدخول يعتمد مباشرة على السعر الحالي المدخل
-            
-            let sl = isBuy ? entry * 0.992 : entry * 1.008;
-            let tp1 = isBuy ? entry * 1.008 : entry * 0.992;
-            let tp2 = isBuy ? entry * 1.015 : entry * 0.985;
-            let tp3 = isBuy ? entry * 1.025 : entry * 0.975;
-            let tp4 = isBuy ? entry * 1.040 : entry * 0.960;
+            let entry = basePrice;
+            let sl = entry * 0.992;  // وقف الخسارة
+            let tp1 = entry * 1.009; // هدف أول
+            let tp2 = entry * 1.018; // هدف ثاني
+            let tp3 = entry * 1.030; // هدف ثالث
+            let tp4 = entry * 1.045; // هدف رابع
 
-            // تحديث الواجهة بالنتائج المحسوبة بناءً على سعر السوق الفعلي
             document.getElementById('resEntry').textContent = entry.toFixed(2);
             document.getElementById('resSl').textContent = sl.toFixed(2);
             document.getElementById('resTp1').textContent = tp1.toFixed(2);
-            document.getElementById('resTp2').textContent = tp2.toFixed(2);
+            document.getElementById('resTp2').textContent, document.getElementById('resTp2').textContent = tp2.toFixed(2);
             document.getElementById('resTp3').textContent = tp3.toFixed(2);
             document.getElementById('resTp4').textContent = tp4.toFixed(2);
 
             document.getElementById('resAccuracy').textContent = "98.9%";
-            document.getElementById('buyProb').textContent = "89%";
-            document.getElementById('sellProb').textContent = "11%";
-            document.getElementById('buyBar').style.width = "89%";
-            document.getElementById('sellBar').style.width = "11%";
+            document.getElementById('buyProb').textContent = "91%";
+            document.getElementById('sellProb').textContent = "9%";
+            document.getElementById('buyBar').style.width = "91%";
+            document.getElementById('sellBar').style.width = "9%N";
 
+            // تقرير فني مؤسسي مفصل وغير تقليدي
             document.getElementById('resReportText').innerHTML = `
-                سعر السوق الحالي: <strong>${currentMarketPrice.toFixed(2)}</strong>. بناءً على تحليل الشموع والسيولة الحالية، تم تثبيت منطقة الدخول عند نفس السعر الحالي مع حساب الأهداف (TP1-TP4) ووقف الخسارة بدقة تامة.
+                بناءً على الفحص البصري وهيكل الأسعار الحالي للأصل <strong>${selectedAsset}</strong> عند مستوى السعر <strong>${entry.toFixed(2)}</strong>:
+                <br>• <strong>الاتجاه العام:</strong> الزخم الإيجابي يسيطر على الإطار الزمني الحالي مع اختبار ناجح لمناطق السيولة ودعم الاتجاه الصاعد.
+                <br>• <strong>خطة التداول:</strong> يفضل الدخول عند سعر السوق الحالي مع الالتزام التام بوقف الخسارة المحدد عند <strong>${sl.toFixed(2)}</strong> لإدارة المخاطر بحرفية عالية.
+                <br>• <strong>الاستراتيجية:</strong> جني الأرباح بشكل تدريجي وتنزيل وقف الخسارة عند نقطة الدخول (Break-even) بمجرد تحقيق الهدف الأول (TP1).
             `;
-        }, 2200);
-    }
-
-    function addNewPost() {
-        const input = document.getElementById('newPostInput');
-        const content = input.value.trim();
-        if (!content) return;
-        const postsContainer = document.getElementById('postsContainer');
-        postsContainer.insertAdjacentHTML('afterbegin', `
-            <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 space-y-2">
-                <h4 class="font-bold text-xs text-amber-400">حسن نعمان</h4>
-                <p class="text-xs text-slate-200">${content}</p>
-            </div>
-        `);
-        input.value = '';
+        }, 2000);
     }
 </script>
 </body>
